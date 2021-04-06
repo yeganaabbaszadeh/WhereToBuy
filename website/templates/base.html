@@ -43,26 +43,21 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar" style="position: absolute; right: 10%;">
             <div class="navbar-nav">
-              <a class="nav-item nav-link" id="login" href="/login" style="border-radius: 18%; background-color: #87c59e; margin:5px;">Login</a>
-              <a class="nav-item nav-link" id="login" href="/sign-up" style="border-radius: 18%; background-color: #fb8d83; margin:5px;">Sign Up</a>
+              <a class="nav-item nav-link" id="login" href="/login" style="border-radius: 20%; background-color: #87c59e; margin: 10px; ">Login</a>
+              <a class="nav-item nav-link" id="login" href="/sign-up" style="border-radius: 15%; background-color: #fb8d83; margin: 10px;">Sign Up</a>
             </div>
         </div>
       </div>
     </nav>
   </header>
-  <main>
+  <!-- <main>
     <br>
     <form class="form-inline my-2 my-lg-0" style="margin: 2cm;">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
     </form>
-      
-    <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-    </form> -->
     <br>
-  </main>
+  </main> -->
 
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -87,7 +82,14 @@
   {% endwith %}
 
   <div class="container">
-    {% block content %} {% endblock %}
+    {% block content %}
+      <br>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+      <br>
+    {% endblock %}
   </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
