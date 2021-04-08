@@ -14,9 +14,9 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #6aace2;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #195190;">
       <div class="container">
-        <a class="navbar-brand" href="/">WhereToBuy</a>
+        <a class="navbar-brand" href="/" style="font-size: 150%;"><b>WhereToBuy</b></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,22 +43,17 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar" style="position: absolute; right: 10%;">
             <div class="navbar-nav">
-              <a class="nav-item nav-link" id="login" href="/login" style="border-radius: 20%; background-color: #87c59e; margin: 10px; ">Login</a>
-              <a class="nav-item nav-link" id="login" href="/sign-up" style="border-radius: 15%; background-color: #fb8d83; margin: 10px;">Sign Up</a>
+              {% if user.is_authenticated %}
+              <a class="btn btn-outline-success active" id="logout" href="/logout" role="button" style="border-color: #ffb31a; background-color: #ffb31a; margin: 5px; height: 75%;">Logout</a>
+              {% else %}
+              <a class="btn btn-outline-success active" id="login" href="/login" role="button" style="border-color: #94ba5e; background-color: #94ba5e; margin: 5px; height: 75%;">Login</a>
+              <a class="btn btn-outline-success active" id="sign-up" href="/sign-up" role="button" style="border-color: #6d8f3d; background-color: #6d8f3d; margin: 5px; height: 75%;">Sign Up</a>
+              {% endif %}
             </div>
         </div>
       </div>
     </nav>
   </header>
-  <!-- <main>
-    <br>
-    <form class="form-inline my-2 my-lg-0" style="margin: 2cm;">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-    </form>
-    <br>
-  </main> -->
-
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       {% for category, message in messages %}
@@ -85,7 +80,7 @@
     {% block content %}
       <br>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 50%;">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
       </form>
       <br>
