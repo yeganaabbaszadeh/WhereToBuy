@@ -4,7 +4,6 @@ from datetime import datetime
 from os import path
 from flask_login import LoginManager
 
-
 db = SQLAlchemy()
 DB_NAME = 'database.db'
 
@@ -32,6 +31,8 @@ def create_app():
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))
+
+    
     
     return app
 
