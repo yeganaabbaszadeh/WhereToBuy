@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
-from amazon import *
+from webscrapers.amazon import *
 import csv
 
 views = Blueprint('views', __name__)

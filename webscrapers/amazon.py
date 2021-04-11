@@ -2,9 +2,9 @@ from pathlib import Path
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import csv
+import os
 
-
-DRIVER_PATH = str(Path('geckodriver').resolve())
+DRIVER_PATH = str(Path('webscrapers/geckodriver').resolve())
 BROWSER = webdriver.Firefox(executable_path=DRIVER_PATH)
 
 def write_csv(ads):
