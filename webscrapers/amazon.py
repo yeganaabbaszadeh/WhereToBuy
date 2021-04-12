@@ -8,7 +8,7 @@ DRIVER_PATH = str(Path('webscrapers/geckodriver').resolve())
 BROWSER = webdriver.Firefox(executable_path=DRIVER_PATH)
 
 def write_csv(ads):
-    with open('results.csv', 'a+', encoding='utf-8') as f:
+    with open('webscrapers/results.csv', 'a+', encoding='utf-8') as f:
         fields = ['title', 'link', 'price']
 
         writer = csv.DictWriter(f, fieldnames=fields)
@@ -38,20 +38,19 @@ def scrape_data(card):
         price = ''
     else:
         price = ''.join(price.split(','))
+
     
     data = {'title': title, 'link': link, 'price': price}
 
     return data
 
 
-def scraper(item):
+def amazonScraper(item):
     ads_data = []
 
-    _f = open('results.csv', 'w+', encoding='utf-8')
+    _f = open('webscrapers/results.csv', 'w+', encoding='utf-8')
     _f.write("")
     _f.close()
-    _f.close()
-    ads_data = []
 
     url = f"https://www.amazon.com/s?k={item}&page=1&qid=1617940467&ref=sr_pg_2"
     html = get_html(url)
@@ -64,7 +63,7 @@ def scraper(item):
         data = scrape_data(card)
         ads_data.append(data) 
 
-    with open('results.csv', 'a+', encoding='utf-8') as f:
+    with open('webscrapers/results.csv', 'a+', encoding='utf-8') as f:
         f.write("title,link,price\n")
     f.close()
     write_csv(ads_data)
