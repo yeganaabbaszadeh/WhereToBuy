@@ -34,7 +34,7 @@
                 Websites
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="https://www.aliexpress.com/" target="_blank">AliExpress</a>
+                <!-- <a class="dropdown-item" href="https://www.aliexpress.com/" target="_blank">AliExpress</a> -->
                 <a class="dropdown-item" href="https://www.amazon.com/" target="_blank">Amazon</a>
                 <a class="dropdown-item" href="https://tap.az/" target="_blank">tap.az</a>
               </div>
@@ -76,20 +76,70 @@
     {% endif %}
   {% endwith %}
 
+  <br>
+
   <div class="container">
     {% block content %}
       <br>
-      <section>
         <form class="form-inline my-2 my-lg-0" action="{{ url_for('views.search') }}" method="POST">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search_item" style="width: 90%;">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search_button" value="Search"><i class="fa fa-search"></i></button>
+          <section style="width: auto;">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search_item" style="width: auto;">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search_button" value="Search"><i class="fa fa-search"></i></button>
+          </section>
+
+          <div class="row">
+            <div class="column" style="width: auto; margin: 1cm;">
+              <section>
+                <h5 class="font-weight-bold" style="color: #089191;"><b>Websites</b></h5>
+                  <label class="form-check-label" for="amazon" style="font-size: medium;"><input class="form-check-input" type="checkbox" id="amazon" name="site" value="amazon">Amazon</label>
+                  <label class="form-check-label" for="tapaz" style="font-size: medium;"><input class="form-check-input" type="checkbox" id="tapaz" name="site" value="tapaz">TapAz </label>
+              </section>
+            </div>
+
+            <div class="column" style="width: auto; margin: 1cm;">
+              <h5 class="font-weight-bold mb-3" style="color: #089191;">Price</h5>
+              <div class="d-flex mt-1">
+                <div class="md-form md-outline my-0">
+                  <input id="from" type="text" class="form-control mb-0" placeholder="Min" style="width: 2.5cm;">
+                  <label for="form" style="font-size: medium;"></label>
+                </div>
+                <p class="px-2 mb-0 text-muted"> - </p>
+                <div class="md-form md-outline my-0">
+                  <input id="to" type="text" class="form-control mb-0" placeholder="Max" style="width: 2.5cm;">
+                  <label for="to" style="font-size: medium;"></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="column" style="width: auto; margin: 1cm;">
+              <h5 class="font-weight-bold mb-3" style="color: #089191;">Currency</h5>
+              <select name="currency" id="currency">
+                <option value="usd">USD</option>
+                <option value="azn">AZN</option>
+              </select>
+            </div>
+
+            <div class="column" style="width: auto; margin: 1cm;">
+              <h5 class="font-weight-bold mb-3" style="color: #089191;">Sorting order</h5>
+              <label class="form-check-label" for="amazon" style="font-size: medium;"><input class="form-check-input" type="radio" id="ascending" name="order" value="ascending">Ascending</label>
+              <label class="form-check-label" for="amazon" style="font-size: medium;"><input class="form-check-input" type="radio" id="descending" name="order" value="descending">Descending</label>
+            </div>
+
+            <div class="column" style="width: auto; margin: 1cm;">
+              <section>
+                <h5 class="font-weight-bold" style="color: #089191;"><b>Shipping</b></h5>
+                <label class="form-check-label" for="shipping"><input class="form-check-input" type="checkbox" id="shipping" name="shipping" value="shipping">Available</label><br>
+              </section>
+            </div>
+          </div>
         </form>
-      </section>
+      <hr>
       <br>
 
       {% if isSearching %}
         <div class="row">
-          <div class="column" style="width: 30%; margin: 1.5cm;">
+          {% if 'amazon' in sites %}
+          <div class="column" value="amazon" style="width: 30%;">
             <h1 style="color: #ef8c2a;"><b>Amazon</b></h1>
             <br>
             {% for item in amazonItems %}
@@ -98,8 +148,10 @@
             <hr>
             {% endfor %}
           </div>
-
-          <div class="column" style="width: 30%; margin: 1.5cm;">
+          {% endif %}
+          
+          {% if 'tapaz' in sites %}
+          <div class="column" value="tapaz" style="width: 30%; margin-left: 1.5cm; margin-right: 1.5cm;">
             <h1 style="color:#ed7014;"><b>TapAz</b></h1>
             <br>
             {% for item in tapazItems %}
@@ -108,35 +160,23 @@
             <hr>
             {% endfor %}
           </div>
-
-          <div class="column" style="width: 30%; margin: 1.5cm;">
+          {% endif %}  
+          
+          {% if 'aliexpress' in sites %}
+          <div class="column" style="width: 30%;">
             <h1 style="color:#e42c1b;"><b>AliExpress</b></h1>
             <br>
+            {% for item in aliexpressItems %}
+            <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
+            <p>{{item[2]}}</p>
+            <hr>
+            {% endfor %}
           </div>
+          {% endif %}
         </div>
-
       {% endif %}
     {% endblock %}
   </div>
-
-
-  <!-- <section class="ml-5">
-    <form>
-      <h6 class="font-weight-bold mb-2"><b>Websites</b></h6>
-      <div class="form-check pl-0 mb-1">
-        <input type="checkbox" class="form-check-input filled-in" id="aliexpress">
-        <label class="form-check-label card-link-secondary" for="aliexpress">AliExpress</label>
-      </div>
-      <div class="form-check pl-0 mb-1">
-        <input type="checkbox" class="form-check-input filled-in" id="amazon">
-        <label class="form-check-label card-link-secondary" for="amazon">Amazon</label>
-      </div>
-      <div class="form-check pl-0 mb-1">
-        <input type="checkbox" class="form-check-input filled-in" id="tapaz">
-        <label class="form-check-label card-link-secondary" for="tapaz">Tap.az</label>
-      </div>
-    <form>
-  </section> -->
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -148,5 +188,4 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 </body>
-
 </html>
