@@ -5,11 +5,8 @@ import csv
 
 views = Blueprint('views', __name__)
 amazon_data = []
-amazon_ls = []
 tapaz_data = []
-tapaz_ls = []
-aliexpress_data = []
-aliexpress_ls = []
+# aliexpress_data = []
 
 
 @views.route('/', methods=["GET", "POST"])
@@ -29,12 +26,13 @@ def search():
     tapaz_data.clear()
     amazonScraper(item)
     tapazScraper(item)
-    aliexpressScraper(item)
+    # aliexpressScraper(item)
 
     if request.method == "POST":
         sites = request.form.getlist('site')
+        min_price = int(request.form.get('from', default=0))
+        max_price = int(request.form.get('to', default=10000))
 
-    print(sites)
 
     with open('webscrapers/results.csv', mode='r', encoding='utf-8') as csv_file:
         csv_reader = csv.DictReader(csv_file)
@@ -43,32 +41,44 @@ def search():
             if line_num != 0:
                 if row['page'] == 'amazon':
                     if row['price'] != "":
-                        row['price'] =  '$' + row['price']
+                        if min_price < int(row['price']) < max_price:
+                            row['price'] = '$' + row['price']
+                            amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page']]
+                        else:
+                            continue
                     else:
-                        row['price'] = "Pricing information not available." 
-                                
-                    amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page']]
+                        continue
+
                     amazon_data.append(amazon_ls)
 
                 elif row['page'] == 'tapaz':
                     if row['price'] != "":
-                        row['price'] = row['price'] + 'AZN'
+                        if min_price < int(row['price']) < max_price:
+                            row['price'] = row['price'] + 'AZN'
+                            tapaz_ls = [row['title'], 'https://tap.az' + row['link'], row['price'], row['page']]
+                        else:
+                            continue
                     else:
-                        row['price'] = "Pricing information not available." 
+                        continue
                             
-                    tapaz_ls = [row['title'], 'https://tap.az' + row['link'], row['price'], row['page']]
                     tapaz_data.append(tapaz_ls)
 
-                elif row['page'] == 'aliexpress':
-                    if row['price'] != "":
-                        row['price'] = row['price']
-                    else:
-                        row['price'] = "Pricing information not available." 
+                # elif row['page'] == 'aliexpress':
+                #     if row['price'] != "":
+                #         if min_price < int(row['price']) < max_price:
+                #             aliexpress_ls = [row['title'], 'https:' + row['link'], row['price'], row['page']]
+                #         else:
+                #             continue
+                #     else:
+                #         row['price'] = "Pricing information not available."
+                #         aliexpress_ls = [row['title'], 'https:' + row['link'], row['price'], row['page']]
 
-                    if row['title'] != []:
-                        aliexpress_ls = [row['title'], 'https:' + row['link'], row['price'], row['page']]
-                        aliexpress_data.append(aliexpress_ls)
+                    
+                #     aliexpress_data.append(aliexpress_ls)
+
 
             line_num = line_num + 1
 
-    return render_template('home.html', user=current_user, isSearching = True, amazonItems=amazon_data, tapazItems=tapaz_data, aliexpressItems=aliexpress_data, item=request.form.get('search_item'), sites=request.form.getlist('site'))
+    return render_template('home.html', user=current_user, isSearching = True, amazonItems=amazon_data, tapazItems=tapaz_data, item=request.form.get('search_item'), sites=request.form.getlist('site'), min_price=min_price, max_price=max_price)
+
+

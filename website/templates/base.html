@@ -92,7 +92,8 @@
               <section>
                 <h5 class="font-weight-bold" style="color: #089191;"><b>Websites</b></h5>
                   <label class="form-check-label" for="amazon" style="font-size: medium;"><input class="form-check-input" type="checkbox" id="amazon" name="site" value="amazon">Amazon</label>
-                  <label class="form-check-label" for="tapaz" style="font-size: medium;"><input class="form-check-input" type="checkbox" id="tapaz" name="site" value="tapaz">TapAz </label>
+                  <label class="form-check-label" for="tapaz" style="font-size: medium;"><input class="form-check-input" type="checkbox" id="tapaz" name="site" value="tapaz">TapAz</label>
+                  <label class="form-check-label" for="aliexpress" style="font-size: medium;"><input class="form-check-input" type="checkbox" id="aliexpress" name="site" value="aliexpress">AliExpress</label>
               </section>
             </div>
 
@@ -100,12 +101,12 @@
               <h5 class="font-weight-bold mb-3" style="color: #089191;">Price</h5>
               <div class="d-flex mt-1">
                 <div class="md-form md-outline my-0">
-                  <input id="from" type="text" class="form-control mb-0" placeholder="Min" style="width: 2.5cm;">
-                  <label for="form" style="font-size: medium;"></label>
+                  <input id="from" type="text" name="from" class="form-control mb-0" placeholder="Min" style="width: 2.5cm;">
+                  <label for="from" style="font-size: medium;"></label>
                 </div>
                 <p class="px-2 mb-0 text-muted"> - </p>
                 <div class="md-form md-outline my-0">
-                  <input id="to" type="text" class="form-control mb-0" placeholder="Max" style="width: 2.5cm;">
+                  <input id="to" type="text" name="to" class="form-control mb-0" placeholder="Max" style="width: 2.5cm;">
                   <label for="to" style="font-size: medium;"></label>
                 </div>
               </div>
@@ -121,8 +122,12 @@
 
             <div class="column" style="width: auto; margin: 1cm;">
               <h5 class="font-weight-bold mb-3" style="color: #089191;">Sorting order</h5>
-              <label class="form-check-label" for="amazon" style="font-size: medium;"><input class="form-check-input" type="radio" id="ascending" name="order" value="ascending">Ascending</label>
-              <label class="form-check-label" for="amazon" style="font-size: medium;"><input class="form-check-input" type="radio" id="descending" name="order" value="descending">Descending</label>
+              <!-- <label class="form-check-label" for="order" style="font-size: medium;"><input class="form-check-input" type="radio" id="ascending" name="order" value="ascending">Ascending</label> -->
+              <!-- <label class="form-check-label" for="order" style="font-size: medium;"><input class="form-check-input" type="radio" id="descending" name="order" value="descending">Descending</label> -->
+              <select name="order" id="order">
+                <option value="ascending">Ascending</option>
+                <option value="descending">Descending</option>
+              </select>
             </div>
 
             <div class="column" style="width: auto; margin: 1cm;">
@@ -139,31 +144,31 @@
       {% if isSearching %}
         <div class="row">
           {% if 'amazon' in sites %}
-          <div class="column" value="amazon" style="width: 30%;">
+          <div class="column" value="amazon" style="width: 30%; margin: 1cm;">
             <h1 style="color: #ef8c2a;"><b>Amazon</b></h1>
             <br>
             {% for item in amazonItems %}
             <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
             <p>{{item[2]}}</p>
-            <hr>
+            <hr>   
             {% endfor %}
           </div>
           {% endif %}
           
           {% if 'tapaz' in sites %}
-          <div class="column" value="tapaz" style="width: 30%; margin-left: 1.5cm; margin-right: 1.5cm;">
+          <div class="column" value="tapaz" style="width: 30%; margin: 1cm;">
             <h1 style="color:#ed7014;"><b>TapAz</b></h1>
             <br>
             {% for item in tapazItems %}
             <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
             <p>{{item[2]}}</p>
-            <hr>
+            <hr>   
             {% endfor %}
           </div>
           {% endif %}  
           
           {% if 'aliexpress' in sites %}
-          <div class="column" style="width: 30%;">
+          <div class="column" style="width: 30%; margin: 1cm;">
             <h1 style="color:#e42c1b;"><b>AliExpress</b></h1>
             <br>
             {% for item in aliexpressItems %}

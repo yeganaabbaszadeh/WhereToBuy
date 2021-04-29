@@ -59,7 +59,7 @@ def amazonScraper(item):
     _f.close()
     ads_data = []
 
-    for i in range(1, 2):
+    for i in range(1, 20):
         url = f"https://www.amazon.com/s?k={item}&page={i}&qid=1617940467&ref=sr_pg_2"
         html = get_html(url)
 
@@ -118,12 +118,12 @@ def tapazScraper(item):
     f.close()
     write_csv(ads_data)
 
-
+'''
 def scrape_aliexpress_data(item):
 
     search_data = []
 
-    for page_num in range(1, 2):
+    for page_num in range(1, 3):
         BROWSER.get(f'https://www.aliexpress.com/wholesale?trafficChannel=main&d=y&CatId=0&SearchText={item}&ltype=wholesale&SortType=default&page={page_num}')
         sleep(1)
 
@@ -167,4 +167,4 @@ def aliexpressScraper(item):
         
     f.close()
     write_csv(ads_data)
-
+'''
