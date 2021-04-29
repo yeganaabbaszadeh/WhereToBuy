@@ -93,7 +93,6 @@
                 <h5 class="font-weight-bold" style="color: #089191;"><b>Websites</b></h5>
                   <label class="form-check-label" for="amazon" style="font-size: medium;"><input class="form-check-input" type="checkbox" id="amazon" name="site" value="amazon">Amazon</label>
                   <label class="form-check-label" for="tapaz" style="font-size: medium;"><input class="form-check-input" type="checkbox" id="tapaz" name="site" value="tapaz">TapAz</label>
-                  <label class="form-check-label" for="aliexpress" style="font-size: medium;"><input class="form-check-input" type="checkbox" id="aliexpress" name="site" value="aliexpress">AliExpress</label>
               </section>
             </div>
 
@@ -122,8 +121,6 @@
 
             <div class="column" style="width: auto; margin: 1cm;">
               <h5 class="font-weight-bold mb-3" style="color: #089191;">Sorting order</h5>
-              <!-- <label class="form-check-label" for="order" style="font-size: medium;"><input class="form-check-input" type="radio" id="ascending" name="order" value="ascending">Ascending</label> -->
-              <!-- <label class="form-check-label" for="order" style="font-size: medium;"><input class="form-check-input" type="radio" id="descending" name="order" value="descending">Descending</label> -->
               <select name="order" id="order">
                 <option value="ascending">Ascending</option>
                 <option value="descending">Descending</option>
@@ -163,18 +160,6 @@
             <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
             <p>{{item[2]}}</p>
             <hr>   
-            {% endfor %}
-          </div>
-          {% endif %}  
-          
-          {% if 'aliexpress' in sites %}
-          <div class="column" style="width: 30%; margin: 1cm;">
-            <h1 style="color:#e42c1b;"><b>AliExpress</b></h1>
-            <br>
-            {% for item in aliexpressItems %}
-            <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
-            <p>{{item[2]}}</p>
-            <hr>
             {% endfor %}
           </div>
           {% endif %}

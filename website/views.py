@@ -6,7 +6,6 @@ import csv
 views = Blueprint('views', __name__)
 amazon_data = []
 tapaz_data = []
-# aliexpress_data = []
 
 
 @views.route('/', methods=["GET", "POST"])
@@ -26,18 +25,13 @@ def search():
     tapaz_data.clear()
     amazonScraper(item)
     tapazScraper(item)
-    # aliexpressScraper(item)
 
     if request.method == "POST":
         sites = request.form.getlist('site')
-        min_price = int(request.form.get('from')) if request.form.get('from') != '' else 0
-        max_price = int(request.form.get('to')) if request.form.get('to') != '' else 10000
+        min_price = float(request.form.get('from')) if request.form.get('from') != '' else 0.00
+        max_price = float(request.form.get('to')) if request.form.get('to') != '' else 10000.00
         currency = request.form.get('currency')
         order = request.form.get('order')
-
-    # print(f"{min_price}, {max_price}")
-    # print(currency)
-    # print(order)
 
 
     with open('webscrapers/results.csv', mode='r', encoding='utf-8') as csv_file:
@@ -47,11 +41,17 @@ def search():
             if line_num != 0:
                 if row['page'] == 'amazon':
                     if row['price'] != "":
-                        if min_price < int(row['price']) < max_price:
+                        if currency == 'usd':
+                            row['price'] = round(float(row['price']), 3)
+                        else:
+                            row['price'] = round(float(row['price']) * 1.70, 3)
+
+
+                        if min_price < row['price'] < max_price:
                             if currency == 'usd':
-                                row['price'] = '$' + row['price']
+                                row['price'] = '$' + str(row['price'])
                             else:
-                                row['price'] = str(float(row['price']) * 1.70) + ' AZN'
+                                row['price'] = str(row['price']) + ' AZN'
 
                             amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page']]
                         else:
@@ -63,11 +63,17 @@ def search():
 
                 elif row['page'] == 'tapaz':
                     if row['price'] != "":
-                        if min_price < int(row['price']) < max_price:
+                        if currency == 'usd':
+                            row['price'] = round(float(row['price']) / 1.70, 3)
+                        else:
+                            row['price'] = round(float(row['price']), 3)
+
+
+                        if min_price < row['price'] < max_price:
                             if currency == 'usd':
-                                row['price'] = '$' + str(float(row['price']) / 1.70)
+                                row['price'] = '$' + str(row['price'])
                             else:
-                                row['price'] = row['price'] + ' AZN'
+                                row['price'] = str(row['price']) + ' AZN'
 
                             tapaz_ls = [row['title'], 'https://tap.az' + row['link'], row['price'], row['page']]
                         else:
@@ -76,19 +82,6 @@ def search():
                         continue
                             
                     tapaz_data.append(tapaz_ls)
-
-                # elif row['page'] == 'aliexpress':
-                #     if row['price'] != "":
-                #         if min_price < int(row['price']) < max_price:
-                #             aliexpress_ls = [row['title'], 'https:' + row['link'], row['price'], row['page']]
-                #         else:
-                #             continue
-                #     else:
-                #         row['price'] = "Pricing information not available."
-                #         aliexpress_ls = [row['title'], 'https:' + row['link'], row['price'], row['page']]
-
-                    
-                #     aliexpress_data.append(aliexpress_ls)
 
 
             line_num = line_num + 1
