@@ -30,8 +30,14 @@ def search():
 
     if request.method == "POST":
         sites = request.form.getlist('site')
-        min_price = int(request.form.get('from', default=0))
-        max_price = int(request.form.get('to', default=10000))
+        min_price = int(request.form.get('from')) if request.form.get('from') != '' else 0
+        max_price = int(request.form.get('to')) if request.form.get('to') != '' else 10000
+        currency = request.form.get('currency')
+        order = request.form.get('order')
+
+    # print(f"{min_price}, {max_price}")
+    # print(currency)
+    # print(order)
 
 
     with open('webscrapers/results.csv', mode='r', encoding='utf-8') as csv_file:
@@ -42,7 +48,11 @@ def search():
                 if row['page'] == 'amazon':
                     if row['price'] != "":
                         if min_price < int(row['price']) < max_price:
-                            row['price'] = '$' + row['price']
+                            if currency == 'usd':
+                                row['price'] = '$' + row['price']
+                            else:
+                                row['price'] = str(float(row['price']) * 1.70) + ' AZN'
+
                             amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page']]
                         else:
                             continue
@@ -54,7 +64,11 @@ def search():
                 elif row['page'] == 'tapaz':
                     if row['price'] != "":
                         if min_price < int(row['price']) < max_price:
-                            row['price'] = row['price'] + 'AZN'
+                            if currency == 'usd':
+                                row['price'] = '$' + str(float(row['price']) / 1.70)
+                            else:
+                                row['price'] = row['price'] + ' AZN'
+
                             tapaz_ls = [row['title'], 'https://tap.az' + row['link'], row['price'], row['page']]
                         else:
                             continue
@@ -79,6 +93,6 @@ def search():
 
             line_num = line_num + 1
 
-    return render_template('home.html', user=current_user, isSearching = True, amazonItems=amazon_data, tapazItems=tapaz_data, item=request.form.get('search_item'), sites=request.form.getlist('site'), min_price=min_price, max_price=max_price)
+    return render_template('home.html', user=current_user, isSearching = True, amazonItems=amazon_data, tapazItems=tapaz_data, item=request.form.get('search_item'), sites=request.form.getlist('site'), min_price=min_price, max_price=max_price, currency=currency, order = request.form.get('order'))
 
 

@@ -12,3 +12,112 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1619654375690	Marionette	WARN	TLS certificate errors will be ignored for this session
 1619654660567	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
 JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1619655399605	geckodriver	INFO	Listening on 127.0.0.1:37641
+1619655399607	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileDmMPKI"
+1619655400753	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619655403233	Marionette	INFO	Listening on port 42335
+1619655403324	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619655403581	geckodriver	INFO	Listening on 127.0.0.1:38231
+1619655403595	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile2Tc9EB"
+1619655404845	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619655406795	Marionette	INFO	Listening on port 36551
+1619655406813	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619655451462	geckodriver	INFO	Listening on 127.0.0.1:50103
+1619655451465	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileG9CD1z"
+1619655452651	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619655455147	Marionette	INFO	Listening on port 38679
+1619655455188	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+1619655494279	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1619655685621	geckodriver	INFO	Listening on 127.0.0.1:46527
+1619655685624	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileOAky5W"
+1619655686770	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619655689224	Marionette	INFO	Listening on port 40923
+1619655689246	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619655689504	geckodriver	INFO	Listening on 127.0.0.1:52795
+1619655689507	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilerF6p7B"
+1619655690750	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619655692962	Marionette	INFO	Listening on port 39855
+1619655693026	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1619656194353	geckodriver	INFO	Listening on 127.0.0.1:33445
+1619656194355	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilevN1J9F"
+1619656195436	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619656197696	Marionette	INFO	Listening on port 40999
+1619656197773	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619656198017	geckodriver	INFO	Listening on 127.0.0.1:38845
+1619656198020	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileb1zo0E"
+1619656199669	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619656201739	Marionette	INFO	Listening on port 35793
+1619656201838	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619656220358	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1619656290941	geckodriver	INFO	Listening on 127.0.0.1:51955
+1619656290944	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile5UCSvd"
+1619656292159	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619656294231	Marionette	INFO	Listening on port 35013
+1619656294265	Marionette	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1619656978940	geckodriver	INFO	Listening on 127.0.0.1:44567
+1619656978942	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilexKU6cU"
+1619656980017	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619656982389	Marionette	INFO	Listening on port 42079
+1619656982460	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619656982723	geckodriver	INFO	Listening on 127.0.0.1:52727
+1619656982726	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilebELRUt"
+1619656984044	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619656986277	Marionette	INFO	Listening on port 33461
+1619656986353	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+1619657258024	geckodriver	INFO	Listening on 127.0.0.1:59565
+1619657258068	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileObWYOu"
+1619657259321	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619657261532	Marionette	INFO	Listening on port 40263
+1619657261589	Marionette	WARN	TLS certificate errors will be ignored for this session

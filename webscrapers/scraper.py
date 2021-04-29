@@ -59,7 +59,7 @@ def amazonScraper(item):
     _f.close()
     ads_data = []
 
-    for i in range(1, 20):
+    for i in range(1, 10):
         url = f"https://www.amazon.com/s?k={item}&page={i}&qid=1617940467&ref=sr_pg_2"
         html = get_html(url)
 
