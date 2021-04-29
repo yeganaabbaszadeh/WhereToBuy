@@ -142,24 +142,32 @@
       {% if isSearching %}
         <div class="row">
           {% if 'amazon' in sites %}
-          <div class="column" value="amazon" style="width: 40%; margin: 1cm;">
+          <div class="column" value="amazon" style="width: 40%; margin: 1.5cm;">
             <h1 style="color: #ef8c2a;"><b>Amazon</b></h1>
             <br>
             {% for item in amazonItems %}
             <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
-            <p>{{item[2]}}</p>
+            {% if currency == 'azn' %}
+            <p>{{item[2]}} AZN</p>
+            {% else %}
+            <p>${{item[2]}}</p>
+            {% endif %}
             <hr>   
             {% endfor %}
           </div>
           {% endif %}
           
           {% if 'tapaz' in sites %}
-          <div class="column" value="tapaz" style="width: 40%; margin: 1cm;">
+          <div class="column" value="tapaz" style="width: 40%; margin: 1.5cm;">
             <h1 style="color:#ed7014;"><b>TapAz</b></h1>
             <br>
             {% for item in tapazItems %}
             <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
-            <p>{{item[2]}}</p>
+            {% if currency == 'usd' %}
+            <p>${{item[2]}}</p>
+            {% else %}
+            <p>{{item[2]}} AZN</p>
+            {% endif %}
             <hr>   
             {% endfor %}
           </div>

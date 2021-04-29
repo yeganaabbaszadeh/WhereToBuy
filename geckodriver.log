@@ -1,0 +1,60 @@
+1619713633759	geckodriver	INFO	Listening on 127.0.0.1:52111
+1619713633762	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilec1NiHD"
+1619713636350	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619713640317	Marionette	INFO	Listening on port 39629
+1619713640632	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619713641553	geckodriver	INFO	Listening on 127.0.0.1:51465
+1619713641556	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileF0Nrno"
+1619713643442	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619713645497	Marionette	INFO	Listening on port 44195
+1619713645575	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619713690911	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1619714375210	geckodriver	INFO	Listening on 127.0.0.1:33109
+1619714375213	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileyACWaW"
+1619714376349	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619714378184	Marionette	INFO	Listening on port 39323
+1619714378230	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619714378502	geckodriver	INFO	Listening on 127.0.0.1:36485
+1619714378505	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileky6v0z"
+1619714379809	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619714381812	Marionette	INFO	Listening on port 41865
+1619714381922	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619714622729	geckodriver	INFO	Listening on 127.0.0.1:47115
+1619714622732	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileZ4JIfi"
+1619714623785	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619714625782	Marionette	INFO	Listening on port 37443
+1619714625856	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+JavaScript error: about:srcdoc, line 9: TypeError: parent is null
+1619714808870	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1619714967226	geckodriver	INFO	Listening on 127.0.0.1:44931
+1619714967229	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofiledNPJ9B"
+1619714968383	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619714970301	Marionette	INFO	Listening on port 43569
+1619714970346	Marionette	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.

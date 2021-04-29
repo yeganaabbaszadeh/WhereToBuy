@@ -34,7 +34,6 @@ def search():
         order = request.form.get('order')
         shipping = request.form.get('shipping')
 
-    print(order)
 
     with open('webscrapers/results.csv', mode='r', encoding='utf-8') as csv_file:
         csv_reader = csv.DictReader(csv_file)
@@ -51,17 +50,12 @@ def search():
 
 
                         if min_price < row['price'] < max_price:
-                            if currency == 'azn':
-                                row['price'] = str(row['price']) + ' AZN'   
-                            else:
-                                row['price'] = '$' + str(row['price'])
-
                             amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page'], shipping_option]
                         else:
                             continue
                     else:
                         shipping_option = "not available"
-                        row['price'] = "Pricing information not available"
+                        row['price'] = 0.00
                         amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page'], shipping_option]
 
                     if shipping == "available":
@@ -71,6 +65,12 @@ def search():
                             continue
                     else:
                         amazon_data.append(amazon_ls)
+
+                    if order == 'ascending':
+                        amazon_data.sort(key = lambda l: l[2])
+                    elif order == 'descending':
+                        amazon_data.sort(key = lambda l: l[2], reverse=True)
+                    
 
                 elif row['page'] == 'tapaz':
                     if row['price'] != "":
@@ -82,18 +82,13 @@ def search():
 
 
                         if min_price < row['price'] < max_price:
-                            if currency == 'usd':
-                                row['price'] = '$' + str(row['price'])
-                            else:
-                                row['price'] = str(row['price']) + ' AZN'
-
                             tapaz_ls = [row['title'], 'https://tap.az' + row['link'], row['price'], row['page'], shipping_option]
                         else:
                             continue
                     else:
                         shipping_option = "not available"
-                        row['price'] = "Pricing information not available"
-                        amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page'], shipping_option]
+                        row['price'] = 0
+                        tapaz_ls = [row['title'], 'https://tap.az' + row['link'], row['price'], row['page'], shipping_option]
 
 
                     if shipping == "available":
@@ -102,8 +97,12 @@ def search():
                         else:
                             continue
                     else:
-                        tapaz_data.append(tapaz_ls)     
-                    # tapaz_data.append(tapaz_ls)
+                        tapaz_data.append(tapaz_ls)
+
+                    if order == 'ascending':
+                        tapaz_data.sort(key = lambda l: l[2])
+                    elif order == 'descending':
+                        tapaz_data.sort(key = lambda l: l[2], reverse=True)   
 
 
             line_num = line_num + 1
