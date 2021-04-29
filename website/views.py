@@ -32,7 +32,9 @@ def search():
         max_price = float(request.form.get('to')) if request.form.get('to') != '' else 10000.00
         currency = request.form.get('currency')
         order = request.form.get('order')
+        shipping = request.form.get('shipping')
 
+    print(order)
 
     with open('webscrapers/results.csv', mode='r', encoding='utf-8') as csv_file:
         csv_reader = csv.DictReader(csv_file)
@@ -41,29 +43,38 @@ def search():
             if line_num != 0:
                 if row['page'] == 'amazon':
                     if row['price'] != "":
-                        if currency == 'usd':
-                            row['price'] = round(float(row['price']), 2)
-                        else:
+                        shipping_option = "available"
+                        if currency == 'azn':
                             row['price'] = round(float(row['price']) * 1.70, 2)
+                        else:
+                            row['price'] = round(float(row['price']), 2)
 
 
                         if min_price < row['price'] < max_price:
-                            if currency == 'usd':
-                                row['price'] = '$' + str(row['price'])
+                            if currency == 'azn':
+                                row['price'] = str(row['price']) + ' AZN'   
                             else:
-                                row['price'] = str(row['price']) + ' AZN'
+                                row['price'] = '$' + str(row['price'])
 
-                            amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page']]
+                            amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page'], shipping_option]
                         else:
                             continue
                     else:
+                        shipping_option = "not available"
                         row['price'] = "Pricing information not available"
-                        amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page']]
+                        amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page'], shipping_option]
 
-                    amazon_data.append(amazon_ls)
+                    if shipping == "available":
+                        if amazon_ls[4] == "available":
+                            amazon_data.append(amazon_ls)
+                        else:
+                            continue
+                    else:
+                        amazon_data.append(amazon_ls)
 
                 elif row['page'] == 'tapaz':
                     if row['price'] != "":
+                        shipping_option = "available"
                         if currency == 'usd':
                             row['price'] = round(float(row['price']) / 1.70, 2)
                         else:
@@ -76,18 +87,27 @@ def search():
                             else:
                                 row['price'] = str(row['price']) + ' AZN'
 
-                            tapaz_ls = [row['title'], 'https://tap.az' + row['link'], row['price'], row['page']]
+                            tapaz_ls = [row['title'], 'https://tap.az' + row['link'], row['price'], row['page'], shipping_option]
                         else:
                             continue
                     else:
+                        shipping_option = "not available"
                         row['price'] = "Pricing information not available"
-                        amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page']]
-                            
-                    tapaz_data.append(tapaz_ls)
+                        amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page'], shipping_option]
+
+
+                    if shipping == "available":
+                        if tapaz_ls[4] == "available":
+                            tapaz_data.append(tapaz_ls)
+                        else:
+                            continue
+                    else:
+                        tapaz_data.append(tapaz_ls)     
+                    # tapaz_data.append(tapaz_ls)
 
 
             line_num = line_num + 1
 
-    return render_template('home.html', user=current_user, isSearching = True, amazonItems=amazon_data, tapazItems=tapaz_data, item=request.form.get('search_item'), sites=request.form.getlist('site'), min_price=min_price, max_price=max_price, currency=currency, order = request.form.get('order'))
+    return render_template('home.html', user=current_user, isSearching = True, amazonItems=amazon_data, tapazItems=tapaz_data, item=request.form.get('search_item'), sites=sites, min_price=min_price, max_price=max_price, currency=currency, order = request.form.get('order'))
 
 
