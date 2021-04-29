@@ -206,3 +206,22 @@ Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
+1619677240462	geckodriver	INFO	Listening on 127.0.0.1:34471
+1619677240466	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile0WhejJ"
+1619677241686	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619677245058	Marionette	INFO	Listening on port 44067
+1619677245091	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619677245701	geckodriver	INFO	Listening on 127.0.0.1:58347
+1619677245704	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileDhzsDn"
+1619677246964	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1619677249147	Marionette	INFO	Listening on port 34927
+1619677249224	Marionette	WARN	TLS certificate errors will be ignored for this session
+1619677270638	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
