@@ -34,7 +34,6 @@
                 Websites
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <!-- <a class="dropdown-item" href="https://www.aliexpress.com/" target="_blank">AliExpress</a> -->
                 <a class="dropdown-item" href="https://www.amazon.com/" target="_blank">Amazon</a>
                 <a class="dropdown-item" href="https://tap.az/" target="_blank">tap.az</a>
               </div>
@@ -141,7 +140,7 @@
       {% if isSearching %}
         <div class="row">
           {% if 'amazon' in sites %}
-          <div class="column" value="amazon" style="width: 30%; margin: 1cm;">
+          <div class="column" value="amazon" style="width: 40%; margin: 1cm;">
             <h1 style="color: #ef8c2a;"><b>Amazon</b></h1>
             <br>
             {% for item in amazonItems %}
@@ -153,7 +152,7 @@
           {% endif %}
           
           {% if 'tapaz' in sites %}
-          <div class="column" value="tapaz" style="width: 30%; margin: 1cm;">
+          <div class="column" value="tapaz" style="width: 40%; margin: 1cm;">
             <h1 style="color:#ed7014;"><b>TapAz</b></h1>
             <br>
             {% for item in tapazItems %}

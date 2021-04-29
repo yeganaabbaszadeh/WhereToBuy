@@ -42,9 +42,9 @@ def search():
                 if row['page'] == 'amazon':
                     if row['price'] != "":
                         if currency == 'usd':
-                            row['price'] = round(float(row['price']), 3)
+                            row['price'] = round(float(row['price']), 2)
                         else:
-                            row['price'] = round(float(row['price']) * 1.70, 3)
+                            row['price'] = round(float(row['price']) * 1.70, 2)
 
 
                         if min_price < row['price'] < max_price:
@@ -57,16 +57,17 @@ def search():
                         else:
                             continue
                     else:
-                        continue
+                        row['price'] = "Pricing information not available"
+                        amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page']]
 
                     amazon_data.append(amazon_ls)
 
                 elif row['page'] == 'tapaz':
                     if row['price'] != "":
                         if currency == 'usd':
-                            row['price'] = round(float(row['price']) / 1.70, 3)
+                            row['price'] = round(float(row['price']) / 1.70, 2)
                         else:
-                            row['price'] = round(float(row['price']), 3)
+                            row['price'] = round(float(row['price']), 2)
 
 
                         if min_price < row['price'] < max_price:
@@ -79,7 +80,8 @@ def search():
                         else:
                             continue
                     else:
-                        continue
+                        row['price'] = "Pricing information not available"
+                        amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page']]
                             
                     tapaz_data.append(tapaz_ls)
 
