@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
 from webscrapers.scraper import *
+from .filter import *
 import csv
 
 views = Blueprint('views', __name__)
@@ -23,8 +24,11 @@ def search():
     item = request.form['search_item']
     amazon_data.clear()
     tapaz_data.clear()
-    amazonScraper(item)
-    tapazScraper(item)
+    amazon = AmazonScraper(item)
+    amazon.get_data(item)
+    tapaz = TapAzScraper(item)
+    tapaz.get_data(item)
+
 
     if request.method == "POST":
         sites = request.form.getlist('site')
@@ -58,19 +62,12 @@ def search():
                         row['price'] = 0.00
                         amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page'], shipping_option]
 
-                    if shipping == "available":
-                        if amazon_ls[4] == "available":
-                            amazon_data.append(amazon_ls)
-                        else:
-                            continue
-                    else:
-                        amazon_data.append(amazon_ls)
+                
+                    shipping_filter = Shipping(amazon_ls, amazon_data, shipping)
+                    shipping_filter.filterByShipping(amazon_ls, amazon_data, shipping)
 
-                    if order == 'ascending':
-                        amazon_data.sort(key = lambda l: l[2])
-                    elif order == 'descending':
-                        amazon_data.sort(key = lambda l: l[2], reverse=True)
-                    
+                    order_filter = Order(amazon_data, order)
+                    order_filter.filterByOrder(amazon_data, order)
 
                 elif row['page'] == 'tapaz':
                     if row['price'] != "":
@@ -90,23 +87,13 @@ def search():
                         row['price'] = 0
                         tapaz_ls = [row['title'], 'https://tap.az' + row['link'], row['price'], row['page'], shipping_option]
 
-
-                    if shipping == "available":
-                        if tapaz_ls[4] == "available":
-                            tapaz_data.append(tapaz_ls)
-                        else:
-                            continue
-                    else:
-                        tapaz_data.append(tapaz_ls)
-
-                    if order == 'ascending':
-                        tapaz_data.sort(key = lambda l: l[2])
-                    elif order == 'descending':
-                        tapaz_data.sort(key = lambda l: l[2], reverse=True)   
-
+                    shipping_filter = Shipping(tapaz_ls, tapaz_data, shipping)
+                    shipping_filter.filterByShipping(tapaz_ls, tapaz_data, shipping)                   
+ 
+                    order_filter = Order(tapaz_data, order)
+                    order_filter.filterByOrder(tapaz_data, order)
 
             line_num = line_num + 1
 
     return render_template('home.html', user=current_user, isSearching = True, amazonItems=amazon_data, tapazItems=tapaz_data, item=request.form.get('search_item'), sites=sites, min_price=min_price, max_price=max_price, currency=currency, order = request.form.get('order'))
-
 

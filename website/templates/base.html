@@ -148,7 +148,7 @@
             {% for item in amazonItems %}
             <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
             {% if currency == 'azn' %}
-            <p>{{item[2]}} AZN</p>
+            <p>{{item[2]}} ₼</p>
             {% else %}
             <p>${{item[2]}}</p>
             {% endif %}
@@ -166,7 +166,7 @@
             {% if currency == 'usd' %}
             <p>${{item[2]}}</p>
             {% else %}
-            <p>{{item[2]}} AZN</p>
+            <p>{{item[2]}} ₼</p>
             {% endif %}
             <hr>   
             {% endfor %}
