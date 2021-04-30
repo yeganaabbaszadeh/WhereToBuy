@@ -47,10 +47,8 @@ def search():
                 if row['page'] == 'amazon':
                     if row['price'] != "":
                         shipping_option = "available"
-                        if currency == 'azn':
-                            row['price'] = round(float(row['price']) * 1.70, 2)
-                        else:
-                            row['price'] = round(float(row['price']), 2)
+                        amazon_currency = CurrencyConverter(row['price'], currency, 'amazon')
+                        row['price'] = amazon_currency.convertCurrency(row['price'], currency, 'amazon')
 
 
                         if min_price < row['price'] < max_price:
@@ -72,10 +70,9 @@ def search():
                 elif row['page'] == 'tapaz':
                     if row['price'] != "":
                         shipping_option = "available"
-                        if currency == 'usd':
-                            row['price'] = round(float(row['price']) / 1.70, 2)
-                        else:
-                            row['price'] = round(float(row['price']), 2)
+                        tapaz_currency = CurrencyConverter(row['price'], currency, 'tapaz')
+                        row['price'] = tapaz_currency.convertCurrency(row['price'], currency, 'tapaz')
+
 
 
                         if min_price < row['price'] < max_price:
