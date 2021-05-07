@@ -13,3 +13,6 @@ WhereToBuy is an aggregator website that gathers information from different e-co
 
 ## Run the program
     python3 main.py
+
+## Structure and working process
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
