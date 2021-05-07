@@ -5,8 +5,10 @@ WhereToBuy is an aggregator website that gathers information from different e-co
 ## Requirements
 * Program supports Firefox as a webdriver, so Firefox should be already installed. If you don't have Firefox webdriver, you can install it from [here](https://www.mozilla.org/en-US/firefox/new/).
 * Get the source code
+
     git clone git@github.com:yeganaabbaszadeh/WhereToBuy.git
 * Install required libraries
+
     pip3 install -r requirements.txt
 
 ## Run the program
