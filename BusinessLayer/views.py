@@ -1,12 +1,14 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
 from webscrapers.scraper import *
+from webscrapers.amazon import *
+from webscrapers.tapaz import *
 from .filter import *
 import csv
 
 views = Blueprint('views', __name__)
-amazon_data = []
-tapaz_data = []
+# amazon_data = []
+# tapaz_data = []
 
 
 @views.route('/', methods=["GET", "POST"])
@@ -22,6 +24,8 @@ def about():
 @views.route('/search', methods=['GET', 'POST'])
 def search():
     item = request.form['search_item']
+    amazon_data = []
+    tapaz_data = []
     amazon_data.clear()
     tapaz_data.clear()
     amazon = AmazonScraper(item)
@@ -47,8 +51,7 @@ def search():
                 if row['page'] == 'amazon':
                     if row['price'] != "":
                         shipping_option = "available"
-                        amazon_currency = CurrencyConverter(row['price'], currency, 'amazon')
-                        row['price'] = amazon_currency.convertCurrency(row['price'], currency, 'amazon')
+                        row['price'] = convertCurrency(row['price'], currency, 'amazon')
 
 
                         if min_price < row['price'] < max_price:
@@ -61,18 +64,13 @@ def search():
                         amazon_ls = [row['title'], 'https://www.amazon.com/' + row['link'], row['price'], row['page'], shipping_option]
 
                 
-                    shipping_filter = Shipping(amazon_ls, amazon_data, shipping)
-                    shipping_filter.filterByShipping(amazon_ls, amazon_data, shipping)
-
-                    order_filter = Order(amazon_data, order)
-                    order_filter.filterByOrder(amazon_data, order)
+                    amazon_data = filterByShipping(amazon_ls, amazon_data, shipping)
+                    filterByOrder(amazon_data, order)
 
                 elif row['page'] == 'tapaz':
                     if row['price'] != "":
                         shipping_option = "available"
-                        tapaz_currency = CurrencyConverter(row['price'], currency, 'tapaz')
-                        row['price'] = tapaz_currency.convertCurrency(row['price'], currency, 'tapaz')
-
+                        row['price'] = convertCurrency(row['price'], currency, 'tapaz')
 
 
                         if min_price < row['price'] < max_price:
@@ -84,11 +82,9 @@ def search():
                         row['price'] = 0
                         tapaz_ls = [row['title'], 'https://tap.az' + row['link'], row['price'], row['page'], shipping_option]
 
-                    shipping_filter = Shipping(tapaz_ls, tapaz_data, shipping)
-                    shipping_filter.filterByShipping(tapaz_ls, tapaz_data, shipping)                   
- 
-                    order_filter = Order(tapaz_data, order)
-                    order_filter.filterByOrder(tapaz_data, order)
+
+                    filterByShipping(tapaz_ls, tapaz_data, shipping)
+                    filterByOrder(tapaz_data, order)
 
             line_num = line_num + 1
 
