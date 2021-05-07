@@ -15,4 +15,4 @@ WhereToBuy is an aggregator website that gathers information from different e-co
     python3 main.py
 
 ## Structure
-![alt text](https://github.com/yeganaabbaszadeh/WhereToBuy/blob/7a97a2986a82dce669c2b03b53abcdcd9a3e6bea/UML.png "Logo Title Text 1")
+![alt text](https://github.com/yeganaabbaszadeh/WhereToBuy/blob/911c7f553c52a0e42c654990e9ef45ef75c0c307/UML_diagram.png "Logo Title Text 1")
