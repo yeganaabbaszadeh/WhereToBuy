@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
-from webscrapers.scraper import *
-from webscrapers.amazon import *
-from webscrapers.tapaz import *
+from BusinessLayer.scraper import *
+from BusinessLayer.amazon import *
+from BusinessLayer.tapaz import *
 from .filter import *
 import csv
 
@@ -43,7 +43,7 @@ def search():
         shipping = request.form.get('shipping')
 
 
-    with open('webscrapers/results.csv', mode='r', encoding='utf-8') as csv_file:
+    with open('BusinessLayer/results.csv', mode='r', encoding='utf-8') as csv_file:
         csv_reader = csv.DictReader(csv_file)
         line_num = 0
         for row in csv_reader:

@@ -20,7 +20,7 @@ class TapAzScraper(WebScraper):
 
     def get_data(self, item):
         ads_data = []
-        _f = open('webscrapers/results.csv', 'a+', encoding='utf-8')
+        _f = open('BusinessLayer/results.csv', 'a+', encoding='utf-8')
         _f.write("")
         _f.close()
         
@@ -33,7 +33,7 @@ class TapAzScraper(WebScraper):
             data = self.scrape_data(card)
             ads_data.append(data)
             
-        with open('webscrapers/results.csv', 'a+', encoding='utf-8') as f:
+        with open('BusinessLayer/results.csv', 'a+', encoding='utf-8') as f:
             f.write("title,link,price, page\n") 
         f.close()
         self.write_csv(ads_data)

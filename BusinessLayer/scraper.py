@@ -7,7 +7,7 @@ import csv
 import os
 
 
-DRIVER_PATH = str(Path('webscrapers/geckodriver').resolve())
+DRIVER_PATH = str(Path('BusinessLayer/geckodriver').resolve())
 BROWSER = webdriver.Firefox(executable_path=DRIVER_PATH)
 
 
@@ -16,7 +16,7 @@ class WebScraper:
         self.item = item
 
     def write_csv(self, ads):
-        with open('webscrapers/results.csv', 'a+', encoding='utf-8') as f:
+        with open('BusinessLayer/results.csv', 'a+', encoding='utf-8') as f:
             fields = ['title', 'link', 'price', 'page']
             writer = csv.DictWriter(f, fieldnames=fields)
 

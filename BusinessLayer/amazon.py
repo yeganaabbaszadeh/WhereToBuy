@@ -27,11 +27,11 @@ class AmazonScraper(WebScraper):
 
     def get_data(self, item):
         ads_data = []
-        _f = open('webscrapers/results.csv', 'w+', encoding='utf-8')
+        _f = open('BusinessLayer/results.csv', 'w+', encoding='utf-8')
         _f.write("")
         _f.close()
-        os.remove('webscrapers/results.csv')
-        _f = open('webscrapers/results.csv', 'x', encoding='utf-8')
+        os.remove('BusinessLayer/results.csv')
+        _f = open('BusinessLayer/results.csv', 'x', encoding='utf-8')
         _f.close()
         ads_data = []
 
@@ -45,7 +45,7 @@ class AmazonScraper(WebScraper):
                 data = self.scrape_data(card)
                 ads_data.append(data) 
 
-        with open('webscrapers/results.csv', 'a+', encoding='utf-8') as f:
+        with open('BusinessLayer/results.csv', 'a+', encoding='utf-8') as f:
             f.write("title,link,price,page\n")
         f.close()
         self.write_csv(ads_data)
