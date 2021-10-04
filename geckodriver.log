@@ -504,3 +504,34 @@ Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
+1631820406026	geckodriver	INFO	Listening on 127.0.0.1:37121
+1631820406930	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileoG9JFF"
+1631820409060	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileoG9JFF/search.json.mozlz4", (void 0)))
+1631820412335	Marionette	INFO	Listening on port 43925
+1631820412862	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1631820413677	geckodriver	INFO	Listening on 127.0.0.1:58279
+1631820413681	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile5yGZYK"
+1631820415555	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile5yGZYK/search.json.mozlz4", (void 0)))
+1631820417463	Marionette	INFO	Listening on port 38691
+1631820417716	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+1631820521022	geckodriver	INFO	Listening on 127.0.0.1:60067
+1631820521025	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileXFR5ml"
+1631820522607	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileXFR5ml/search.json.mozlz4", (void 0)))
+1631820524555	Marionette	INFO	Listening on port 36223
+1631820524850	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1631820525156	geckodriver	INFO	Listening on 127.0.0.1:57637
+1631820525160	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile7E1I96"
+1631820527263	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile7E1I96/search.json.mozlz4", (void 0)))
+1631820529242	Marionette	INFO	Listening on port 33129
+1631820529481	RemoteAgent	WARN	TLS certificate errors will be ignored for this session

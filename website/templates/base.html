@@ -11,180 +11,189 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   {% block head %} {% endblock %}
 </head>
+<div class="box">
+  <form action="https://google.com/search">
+    <input type="text" name="q">
+    <input type="submit" value="Google Search">
+  </form>
+</div>vbar-dark" style="background-color: #2894a4;">
+<div class="container">
+  <a class="navbar-brand" href="/" style="font-size: 150%;"><b>WhereToBuy</b></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2894a4;">
-      <div class="container">
-        <a class="navbar-brand" href="/" style="font-size: 150%;"><b>WhereToBuy</b></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/about">About </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Websites
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="https://www.amazon.com/" target="_blank">Amazon</a>
-                <a class="dropdown-item" href="https://tap.az/" target="_blank">tap.az</a>
-              </div>
-            </li>
-          </ul>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/about">About </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Websites
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://www.amazon.com/" target="_blank">Amazon</a>
+          <a class="dropdown-item" href="https://tap.az/" target="_blank">tap.az</a>
         </div>
-        <div class="collapse navbar-collapse" id="navbar" style="position: absolute; right: 10%;">
-            <div class="navbar-nav">
-              {% if user.is_authenticated %}
-              <a class="btn btn-outline-success active" id="logout" href="/logout" role="button" style="border-color: #f3e458; background-color: #f5e870; color: #8f820a; margin: 5px;"><b>Logout</b></a>
-              {% else %}
-              <a class="btn btn-outline-success active" id="login" href="/login" role="button" style="border-color: #75bd8f; background-color: #87c59d; color: #3a7850; margin: 5px;"><b>Login</b></a>
-              <a class="btn btn-outline-success active" id="sign-up" href="/sign-up" role="button" style="border-color: #53ac75; background-color: #64b483; color: #29563b; margin: 5px;"><b>Sign Up</b></a>
-              {% endif %}
-            </div>
+      </li>
+    </ul>
+  </div>
+  <div class="collapse navbar-collapse" id="navbar" style="position: absolute; right: 10%;">
+    <div class="navbar-nav">
+      {% if user.is_authenticated %}
+      <a class="btn btn-outline-success active" id="logout" href="/logout" role="button"
+        style="border-color: #f3e458; background-color: #f5e870; color: #8f820a; margin: 5px;"><b>Logout</b></a>
+      {% else %}
+      <a class="btn btn-outline-success active" id="login" href="/login" role="button"
+        style="border-color: #75bd8f; background-color: #87c59d; color: #3a7850; margin: 5px;"><b>Login</b></a>
+      <a class="btn btn-outline-success active" id="sign-up" href="/sign-up" role="button"
+        style="border-color: #53ac75; background-color: #64b483; color: #29563b; margin: 5px;"><b>Sign Up</b></a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+</nav>
+</header>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+{% if category == "error" %}
+<div class="alert alert-danger alert-dismissable fade show">
+  {{ message }}
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% else %}
+<div class="alert alert-success alert-dismissable fade show">
+  {{ message }}
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<br>
+
+<div class="container">
+  {% block content %}
+  <br>
+  <form class="form-inline my-2 my-lg-0" action="{{ url_for('views.search') }}" method="POST">
+    <section style="width: auto;">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search_item" style="width: auto;">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search_button" value="Search"><i
+          class="fa fa-search"></i></button>
+    </section>
+
+    <div class="row">
+      <div class="column" style="width: auto; margin: 1cm;">
+        <section>
+          <h5 class="font-weight-bold" style="color: #089191;"><b>Websites</b></h5>
+          <label class="form-check-label" for="amazon" style="font-size: medium;"><input class="form-check-input"
+              type="checkbox" id="amazon" name="site" value="amazon">Amazon</label>
+          <label class="form-check-label" for="tapaz" style="font-size: medium;"><input class="form-check-input"
+              type="checkbox" id="tapaz" name="site" value="tapaz">TapAz</label>
+        </section>
+      </div>
+
+      <div class="column" style="width: auto; margin: 1cm;">
+        <h5 class="font-weight-bold mb-3" style="color: #089191;">Price</h5>
+        <div class="d-flex mt-1">
+          <div class="md-form md-outline my-0">
+            <input id="from" type="text" name="from" class="form-control mb-0" placeholder="Min" style="width: 2.5cm;">
+            <label for="from" style="font-size: medium;"></label>
+          </div>
+          <p class="px-2 mb-0 text-muted"> - </p>
+          <div class="md-form md-outline my-0">
+            <input id="to" type="text" name="to" class="form-control mb-0" placeholder="Max" style="width: 2.5cm;">
+            <label for="to" style="font-size: medium;"></label>
+          </div>
         </div>
       </div>
-    </nav>
-  </header>
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-        {% if category == "error" %}
-          <div class="alert alert-danger alert-dismissable fade show">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        {% else %}
-          <div class="alert alert-success alert-dismissable fade show">
-            {{ message }}
-              <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
 
+      <div class="column" style="width: auto; margin: 1cm;">
+        <h5 class="font-weight-bold mb-3" style="color: #089191;">Currency</h5>
+        <select name="currency" id="currency">
+          <option value="default">Default</option>
+          <option value="usd">USD</option>
+          <option value="azn">AZN</option>
+        </select>
+      </div>
+
+      <div class="column" style="width: auto; margin: 1cm;">
+        <h5 class="font-weight-bold mb-3" style="color: #089191;">Sorting order</h5>
+        <select name="order" id="order">
+          <option value="default">Default</option>
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
+      </div>
+
+      <div class="column" style="width: auto; margin: 1cm;">
+        <section>
+          <h5 class="font-weight-bold" style="color: #089191;"><b>Shipping</b></h5>
+          <label class="form-check-label" for="shipping"><input class="form-check-input" type="checkbox" id="shipping"
+              name="shipping" value="available">Available</label><br>
+        </section>
+      </div>
+    </div>
+  </form>
+  <hr>
   <br>
 
-  <div class="container">
-    {% block content %}
+  {% if isSearching %}
+  <div class="row">
+    {% if 'amazon' in sites %}
+    <div class="column" value="amazon" style="width: 40%; margin: 1.5cm;">
+      <h1 style="color: #ef8c2a;"><b>Amazon</b></h1>
       <br>
-        <form class="form-inline my-2 my-lg-0" action="{{ url_for('views.search') }}" method="POST">
-          <section style="width: auto;">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search_item" style="width: auto;">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search_button" value="Search"><i class="fa fa-search"></i></button>
-          </section>
-
-          <div class="row">
-            <div class="column" style="width: auto; margin: 1cm;">
-              <section>
-                <h5 class="font-weight-bold" style="color: #089191;"><b>Websites</b></h5>
-                  <label class="form-check-label" for="amazon" style="font-size: medium;"><input class="form-check-input" type="checkbox" id="amazon" name="site" value="amazon">Amazon</label>
-                  <label class="form-check-label" for="tapaz" style="font-size: medium;"><input class="form-check-input" type="checkbox" id="tapaz" name="site" value="tapaz">TapAz</label>
-              </section>
-            </div>
-
-            <div class="column" style="width: auto; margin: 1cm;">
-              <h5 class="font-weight-bold mb-3" style="color: #089191;">Price</h5>
-              <div class="d-flex mt-1">
-                <div class="md-form md-outline my-0">
-                  <input id="from" type="text" name="from" class="form-control mb-0" placeholder="Min" style="width: 2.5cm;">
-                  <label for="from" style="font-size: medium;"></label>
-                </div>
-                <p class="px-2 mb-0 text-muted"> - </p>
-                <div class="md-form md-outline my-0">
-                  <input id="to" type="text" name="to" class="form-control mb-0" placeholder="Max" style="width: 2.5cm;">
-                  <label for="to" style="font-size: medium;"></label>
-                </div>
-              </div>
-            </div>
-
-            <div class="column" style="width: auto; margin: 1cm;">
-              <h5 class="font-weight-bold mb-3" style="color: #089191;">Currency</h5>
-              <select name="currency" id="currency">
-                <option value="default">Default</option>
-                <option value="usd">USD</option>
-                <option value="azn">AZN</option>
-              </select>
-            </div>
-
-            <div class="column" style="width: auto; margin: 1cm;">
-              <h5 class="font-weight-bold mb-3" style="color: #089191;">Sorting order</h5>
-              <select name="order" id="order">
-                <option value="default">Default</option>
-                <option value="ascending">Ascending</option>
-                <option value="descending">Descending</option>
-              </select>
-            </div>
-
-            <div class="column" style="width: auto; margin: 1cm;">
-              <section>
-                <h5 class="font-weight-bold" style="color: #089191;"><b>Shipping</b></h5>
-                <label class="form-check-label" for="shipping"><input class="form-check-input" type="checkbox" id="shipping" name="shipping" value="available">Available</label><br>
-              </section>
-            </div>
-          </div>
-        </form>
-      <hr>
-      <br>
-
-      {% if isSearching %}
-        <div class="row">
-          {% if 'amazon' in sites %}
-          <div class="column" value="amazon" style="width: 40%; margin: 1.5cm;">
-            <h1 style="color: #ef8c2a;"><b>Amazon</b></h1>
-            <br>
-            {% for item in amazonItems %}
-            <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
-            {% if currency == 'azn' %}
-            <p>{{item[2]}} ₼</p>
-            {% else %}
-            <p>${{item[2]}}</p>
-            {% endif %}
-            <hr>   
-            {% endfor %}
-          </div>
-          {% endif %}
-          
-          {% if 'tapaz' in sites %}
-          <div class="column" value="tapaz" style="width: 40%; margin: 1.5cm;">
-            <h1 style="color:#ed7014;"><b>TapAz</b></h1>
-            <br>
-            {% for item in tapazItems %}
-            <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
-            {% if currency == 'usd' %}
-            <p>${{item[2]}}</p>
-            {% else %}
-            <p>{{item[2]}} ₼</p>
-            {% endif %}
-            <hr>   
-            {% endfor %}
-          </div>
-          {% endif %}
-        </div>
+      {% for item in amazonItems %}
+      <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
+      {% if currency == 'azn' %}
+      <p>{{item[2]}} ₼</p>
+      {% else %}
+      <p>${{item[2]}}</p>
       {% endif %}
-    {% endblock %}
-  </div>
+      <hr>
+      {% endfor %}
+    </div>
+    {% endif %}
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+    {% if 'tapaz' in sites %}
+    <div class="column" value="tapaz" style="width: 40%; margin: 1.5cm;">
+      <h1 style="color:#ed7014;"><b>TapAz</b></h1>
+      <br>
+      {% for item in tapazItems %}
+      <p><a href={{item[1]}} target="_blank">{{item[0]}}</a></p>
+      {% if currency == 'usd' %}
+      <p>${{item[2]}}</p>
+      {% else %}
+      <p>{{item[2]}} ₼</p>
+      {% endif %}
+      <hr>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% endblock %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
+
 </html>
